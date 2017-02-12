@@ -9,6 +9,8 @@ RUN apt-get update \
    && apt-get autoremove \
    && rm -rf /var/lib/apt/lists/*
 
+ENV PATH /usr/games/:$PATH
+
 RUN useradd -ms /bin/bash frotz 
 
 USER frotz
