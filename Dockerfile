@@ -1,17 +1,10 @@
-FROM ubuntu:14.04
+FROM alpine:3.5
 
 MAINTAINER Matt Titmus <matthew.titmus@gmail.com>
 
-RUN apt-get update \
-   && apt-get install --no-install-recommends -y frotz unzip \
-   && apt-get clean \
-   && apt-get autoclean \
-   && apt-get autoremove \
-   && rm -rf /var/lib/apt/lists/*
+RUN apk add --update --no-cache frotz sudo
 
-ENV PATH /usr/games/:$PATH
-
-RUN useradd -ms /bin/bash frotz 
+RUN adduser -Ds /bin/sh frotz
 
 USER frotz
 
